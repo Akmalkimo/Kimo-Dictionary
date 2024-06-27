@@ -51,11 +51,7 @@ i:hover {
 
 i:active {
     background-color: hsl(208, 40%, 70%);
-}
-
-button:hover {
-    background-color: hsla(64, 100%, 50%, 0.9);
-}
+}
 
 input:hover {
     background-color: aliceblue;
@@ -132,4 +128,10 @@ i {
     h1 {
         font-size: 55px;
     }
+    
+    button:hover {
+    background-color: hsla(64, 100%, 50%,
+    0.9);
+    }
+
 }
