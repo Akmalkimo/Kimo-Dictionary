@@ -6,7 +6,7 @@
  const audioIcon = document.querySelector("#audioIcon");
  const definition = document.querySelector("#definition");
  const example = document.querySelector("#example");
- const div = document.querySelector("#div");
+ const textWrapper = document.querySelector("#textWrapper");
 
 button.onclick = () => {
     fetchData();
@@ -21,18 +21,19 @@ async function fetchData(){
             }
             data = await response.json();
             console.log(data);
-            div.classList.remove("disappear");
+            textWrapper.classList.remove("disappear");
             audioIcon.classList.remove("disappear");
             word.textContent = `${userInput[0].toUpperCase()}${userInput.slice(1).toLowerCase()}`; 
             wordType.textContent = data[0].meanings[0].partOfSpeech;
             data[0].phonetics.length == 1 ? pronounciation.textContent = data[0].phonetics[0].text : pronounciation.textContent = data[0].phonetics[1].text;
             definition.textContent = `Definition: ${data[0].meanings[0].definitions[0].definition}`;
-            example.textContent = `Example: ${data[0].meanings[0].definitions[0].example}`;
+            data[0].meanings[0].definitions[0].example === undefined ? example.textContent = "" : example.textContent = `Example: ${data[0].meanings[0].definitions[0].example}`;
+            
     }
     catch(error){
         word.textContent = "word not found.";
         console.error("unexpected error.");
-        div.classList.add("disappear");
+        textWrapper.classList.add("disappear");
     }
 }
 
